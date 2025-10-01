@@ -8,8 +8,8 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
 import { useState } from 'react'
 
 const navLinks = [
-  { href: '#sobre', label: 'Sobre' },
-  { href: '#servicos', label: 'Serviços' },
+  { href: '#about', label: 'Sobre' },
+  { href: '#results', label: 'Resultados' },
   { href: '#contato', label: 'Contato' },
 ]
 
@@ -18,12 +18,12 @@ export const Header = () => {
 
   return (
     <header className="bg-[var(--color-marrom-claro)] shadow-md fixed top-0 left-0 right-0 z-50">
-      <div className="container mx-auto flex items-center justify-between h-10 md:h-20 px-4">
+      <div className="container mx-auto flex items-center justify-between md:h-20 px-4">
         <Link href="#sobre">
           <Image
             src="/images/logo_branco_suave.png"
             alt="Logo"
-            width={120}
+            width={150}
             height={10}
             className="md:w-[200px]"
           />

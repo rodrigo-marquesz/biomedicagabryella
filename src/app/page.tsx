@@ -1,11 +1,13 @@
 import { Header } from "./components/header/Header"
-import { Sobre } from "./components/sobre/Sobre";
+import { Results } from "./components/results/Results";
+import { About } from "./components/about/About";
 
 export default function Home() {
   return (
     <div>
       <Header />
-      <Sobre />
+      <About />
+      <Results />
     </div>
   );
 }

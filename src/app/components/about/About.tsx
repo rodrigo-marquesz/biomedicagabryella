@@ -3,25 +3,42 @@ import { useState, useRef, useEffect } from 'react'
 import { PlayIcon, PauseIcon, SpeakerWaveIcon, SpeakerXMarkIcon, ArrowRightIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 
-export const Sobre = () => {
+export const About = () => {
   const [isPlaying, setIsPlaying] = useState(true)
   const [isMuted, setIsMuted] = useState(true)
+  const [volume, setVolume] = useState(0)
   const [showControls, setShowControls] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     const video = videoRef.current
-    if (video) {
-      isPlaying ? video.play() : video.pause()
-    }
-  }, [isPlaying])
+    if (!video) return
+    video.muted = isMuted
+    video.volume = volume
+  }, [isMuted, volume])
 
-  const togglePlay = () => setIsPlaying(!isPlaying)
+  const togglePlay = () => {
+    const video = videoRef.current
+    if (!video) return
+    if (isPlaying) {
+      video.pause()
+    } else {
+      video.play().catch(() => console.warn('Autoplay bloqueado, precisa de interação do usuário.'))
+    }
+    setIsPlaying(!isPlaying)
+  }
+
   const toggleMute = () => setIsMuted(!isMuted)
 
+  const handleVolumeChange = (val: number) => {
+    setVolume(val)
+    if (val > 0 && isMuted) setIsMuted(false)
+    if (val === 0 && !isMuted) setIsMuted(true)
+  }
+
   return (
-    <section id="sobre" className="relative min-h-screen flex items-center justify-center pt-16 md:pt-20 bg-gradient-to-br from-gray-50 to-white">
-      <div className="container mx-auto px-6 max-w-6xl py-6">
+    <section id="about" className="relative min-h-screen flex items-center justify-center pt-20 bg-gradient-to-br from-gray-50 to-white">
+      <div className="container mx-auto px-6 max-w-6xl py-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 
           <div
@@ -29,13 +46,13 @@ export const Sobre = () => {
             onMouseEnter={() => setShowControls(true)}
             onMouseLeave={() => setShowControls(false)}
           >
-            <div className="aspect-[3.5/5]">
+            <div className="aspect-[3/5]">
               <video
                 ref={videoRef}
-                muted={isMuted}
                 autoPlay
                 loop
                 playsInline
+                muted
                 className="w-full h-full object-cover"
                 poster="/images/video-poster.jpg"
               >
@@ -44,29 +61,41 @@ export const Sobre = () => {
             </div>
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
+
             {showControls && (
-              <div className="absolute bottom-4 right-4 flex space-x-2">
-                {/* botões */}
+              <div className="absolute bottom-4 right-4 flex space-x-2 bg-black/40 rounded-lg p-2">
+                <button onClick={togglePlay} aria-label={isPlaying ? 'Pausar vídeo' : 'Reproduzir vídeo'}>
+                  {isPlaying ? <PauseIcon className="w-6 h-6 text-white" /> : <PlayIcon className="w-6 h-6 text-white" />}
+                </button>
+
+                <button onClick={toggleMute} aria-label={isMuted ? 'Ativar som' : 'Desativar som'}>
+                  {isMuted ? <SpeakerXMarkIcon className="w-6 h-6 text-white" /> : <SpeakerWaveIcon className="w-6 h-6 text-white" />}
+                </button>
+
+                <input
+                  type="range"
+                  min={0}
+                  max={1}
+                  step={0.1}
+                  value={volume}
+                  onChange={(e) => handleVolumeChange(parseFloat(e.target.value))}
+                  className="w-20 accent-[var(--color-marrom-claro)]"
+                />
               </div>
             )}
           </div>
 
-
-
           <div className="space-y-6 text-center md:text-left">
             <div className="inline-block bg-[var(--color-marrom-claro)]/10 px-4 py-2 rounded-full">
-              <span className="text-[var(--color-marrom-claro)] text-sm font-light">INOVAÇÃO CIENTÍFICA</span>
+              <span className="text-[var(--color-marrom-claro)] text-sm font-light">ENZIMAS & MINOXIDIL</span>
             </div>
 
             <h1 className="text-4xl md:text-5xl font-light text-gray-900 leading-tight">
-              Revolução em{' '}
-              <span className="text-[var(--color-marrom-claro)]">Terapia Capilar</span>
+              Inovação em<span className="text-[var(--color-marrom-claro)]"> Terapia Capilar</span>
             </h1>
 
             <p className="text-lg text-gray-600 font-light leading-relaxed">
-              Nossa tecnologia exclusiva com enzimas específicas oferece resultados
-              comprovados no tratamento de crescimento capilar para pacientes masculinos
-              e femininos. Baseada em pesquisas biomédicas avançadas.
+              Nossa tecnologia exclusiva com enzimas capilares, minoxidil e vitaminas, oferecem resultados <b>comprovados</b> no tratamento de crescimento capilar para pacientes masculinos e femininos. Baseada em pesquisas biomédicas avançadas.
             </p>
 
             <div className="space-y-4">
