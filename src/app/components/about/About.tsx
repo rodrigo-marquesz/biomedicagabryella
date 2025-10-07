@@ -87,21 +87,22 @@ export const About = () => {
 
           <div className="space-y-6 text-center md:text-left">
             <div className="inline-block bg-[var(--color-marrom-claro)]/10 px-4 py-2 rounded-full">
-              <span className="text-[var(--color-marrom-claro)] text-sm font-light">ENZIMAS & MINOXIDIL</span>
+              <span className="text-[var(--color-marrom-claro)] text-sm font-light">TRATAMENTO CAPILAR</span>
             </div>
 
             <h1 className="text-4xl md:text-5xl font-light text-gray-900 leading-tight">
-              Inovação em<span className="text-[var(--color-marrom-claro)]"> Terapia Capilar</span>
+              Inovação em<span className="text-[var(--color-marrom-claro)]"> Tratamento Capilar</span>
             </h1>
 
             <p className="text-lg text-gray-600 font-light leading-relaxed">
-              Nossa tecnologia exclusiva com enzimas capilares, minoxidil e vitaminas, oferecem resultados <b>comprovados</b> no tratamento de crescimento capilar para pacientes masculinos e femininos. Baseada em pesquisas biomédicas avançadas.
+              Um cuidado pensado para quem está percebendo falhas, queda de cabelo ou fios mais finos.
+              O protocolo combina ativos que estimulam o crescimento e fortalecem os fios, sempre de forma personalizada conforme a necessidade de cada paciente.
             </p>
 
-            <div className="space-y-4">
+            <div className="flex flex-col items-center md:items-start space-y-4">
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-[var(--color-marrom-claro)] rounded-full"></div>
-                <span className="text-gray-700 font-light">Resultados em 30 dias</span>
+                <span className="text-gray-700 font-light">Resultados gradativos</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-[var(--color-marrom-claro)] rounded-full"></div>
@@ -109,12 +110,12 @@ export const About = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-[var(--color-marrom-claro)] rounded-full"></div>
-                <span className="text-gray-700 font-light">Acompanhamento especializado</span>
+                <span className="text-gray-700 font-light">Tratamento para homens e mulheres</span>
               </div>
             </div>
 
             <Link
-              href="#contato"
+              href="#contact"
               className="inline-flex items-center space-x-2 bg-[var(--color-marrom-claro)] text-white px-6 py-3 rounded-lg font-light hover:bg-opacity-90 transition-all duration-300 group"
             >
               <span>Agendar Avaliação</span>
