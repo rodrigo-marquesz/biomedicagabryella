@@ -14,7 +14,7 @@ export const Footer = () => {
               className="w-[180px] h-auto brightness-0 invert"
             />
             <p className="text-white/80 font-light text-sm leading-relaxed">
-              Especialistas em tratamento capilar com tecnologia de enzimas e protocolos personalizados para resultados comprovados.
+              Especialista em tratamentos faciais e capilares. CRBM-5: 010954
             </p>
           </div>
 
@@ -63,7 +63,7 @@ export const Footer = () => {
                 </a>
               </li>
               <li className="text-white/80 font-light">
-                Unique Business Center - Av. Centenário, 585 - Torre 1 - Sala 1211. Gravataí - RS
+                Unique Business Center, Gravataí - RS
               </li>
             </ul>
 

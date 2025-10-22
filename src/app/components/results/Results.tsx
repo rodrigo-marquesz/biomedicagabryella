@@ -7,12 +7,32 @@ const cases = [
   { 
     before: '/images/capilar_1_before.png', 
     after: '/images/capilar_1_after.png', 
-    title: 'Caso 1 - Coroa capilar inteira'
+    title: 'Tratamento Capilar Masculino'
   },
   { 
     before: '/images/capilar_2_before.png', 
     after: '/images/capilar_2_after.png', 
-    title: 'Caso 2 - Região Lateral'
+    title: 'Tratamento Capilar Masculino'
+  },
+  {
+    before: '/images/preenchimento_nariz_1.png',
+    after: '/images/preenchimento_nariz_2.png',
+    title: 'Preenchimento de Nariz'
+  },
+  {
+    before: '/images/result_capilar_5.png',
+    after: '/images/result_capilar_6.png',
+    title: 'Tratamento Capilar Feminino'
+  },
+  {
+    before: '/images/result_capilar_7.png',
+    after: '/images/result_capilar_8.png',
+    title: 'Tratamento Capilar Feminino'
+  },
+  {
+    before: '/images/preenchimento_facial_1.png',
+    after: '/images/preenchimento_facial_2.png',
+    title: 'Preenchimento Facial'
   }
 ]
 
@@ -53,7 +73,6 @@ export const Results = () => {
   }
 
   const currentCase = cases[currentIndex]
-  const currentMobileSlide = mobileSlides[mobileIndex]
 
   return (
     <section 
@@ -71,7 +90,7 @@ export const Results = () => {
             Resultados <span className="text-[var(--color-marrom-claro)]">Comprovados</span>
           </h2>
           <p className="text-base sm:text-lg text-gray-600 font-light max-w-2xl mx-auto px-4">
-            Acompanhe as transformações de nossos pacientes através dos protocolos e acompanhamentos personalizados com enzimas e minoxidil, botox e preenchimento
+            Acompanhe as transformações de nossos pacientes através dos protocolos e acompanhamentos personalizados do tratamento capilar, botox e preenchimento
           </p>
         </div>
 

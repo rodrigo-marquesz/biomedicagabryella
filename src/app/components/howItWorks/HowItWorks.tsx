@@ -1,26 +1,21 @@
 'use client'
-import { BeakerIcon, ClipboardDocumentCheckIcon, ChartBarIcon, SparklesIcon } from '@heroicons/react/24/outline'
+import { BeakerIcon, ClipboardDocumentCheckIcon, ChartBarIcon } from '@heroicons/react/24/outline'
 
 const steps = [
   {
     icon: ClipboardDocumentCheckIcon,
     title: 'Avaliação Completa',
-    description: 'Análise detalhada do seu quadro capilar, histórico médico e exames laboratoriais para identificar as causas da queda.'
+    description: 'Análise detalhada do seu quadro capilar, histórico familiar e possíveis causas para identificar a queda.'
   },
   {
     icon: BeakerIcon,
     title: 'Protocolo Personalizado',
-    description: 'Formulação exclusiva com enzimas capilares, minoxidil e vitaminas específicas para seu caso.'
+    description: 'Formulação exclusiva do tratamento para seu caso.'
   },
   {
     icon: ChartBarIcon,
-    title: 'Acompanhamento Mensal',
+    title: 'Acompanhamento personalizado',
     description: 'Monitoramento regular com fotos comparativas e ajustes no tratamento conforme necessário.'
-  },
-  {
-    icon: SparklesIcon,
-    title: 'Resultados Visíveis',
-    description: 'Primeiros resultados em 30 dias, com crescimento significativo em 90 a 120 dias de tratamento.'
   }
 ]
 
@@ -36,7 +31,7 @@ export const HowItWorks = () => {
             Como <span className="text-[var(--color-marrom-claro)]">Funciona</span>
           </h2>
           <p className="text-lg text-gray-600 font-light max-w-2xl mx-auto">
-            Um protocolo científico e personalizado para recuperação capilar efetiva
+            Um protocolo científico e personalizado para melhorar a saúde do seu cabelo e combater a queda de forma eficaz.
           </p>
         </div>
 

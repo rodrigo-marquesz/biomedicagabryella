@@ -146,7 +146,7 @@ export const Contact = () => {
                 <div>
                   <div className="text-sm text-gray-500 font-light mb-1">Localização</div>
                   <p className="text-gray-900">
-                    Unique Business Center - Av. Centenário, 585 - Torre 1 - Sala 1211. Gravataí - RS
+                    Unique Business Center, Gravataí - RS
                   </p>
                 </div>
               </div>
@@ -156,12 +156,12 @@ export const Contact = () => {
               <h4 className="text-xl font-light text-gray-900 mb-4">Horário de Atendimento</h4>
               <div className="space-y-3 text-gray-700 font-light">
                 <div className="flex justify-between">
-                  <span>Quartas e Quintas</span>
-                  <span>12h às 20h</span>
+                  <span>Segunda a sexta</span>
+                  <span>09h às 20h</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Sábados</span>
-                  <span>8h às 12h</span>
+                  <span>09h às 13h</span>
                 </div>
                 <div className="flex justify-between text-gray-500">
                   <span>Domingos e outros</span>

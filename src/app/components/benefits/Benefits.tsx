@@ -5,7 +5,6 @@ const benefits = [
   'Tratamento baseado em evidências científicas',
   'Protocolo 100% personalizado para seu caso',
   'Acompanhamento biomédico especializado',
-  'Primeiros resultados em 30 dias',
   'Sem efeitos colaterais significativos',
   'Atendimento humanizado e sigiloso',
   'Tecnologia de ponta em enzimas capilares',
@@ -58,10 +57,6 @@ export const Benefits = () => {
                   
                   <div className="w-px h-16 bg-gray-300 mx-auto"></div>
                   
-                  <div className="space-y-2">
-                    <div className="text-6xl font-light text-[var(--color-marrom-claro)]">1000+</div>
-                    <div className="text-gray-700 font-light">Pacientes Atendidos</div>
-                  </div>
                 </div>
               </div>
             </div>

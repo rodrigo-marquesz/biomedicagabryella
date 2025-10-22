@@ -3,29 +3,64 @@ import { useState } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
 
 const faqs = [
+  // tratamento capilar
   {
-    question: 'Quanto tempo leva para ver os primeiros resultados?',
-    answer: 'Os primeiros resultados podem ser observados em aproximadamente 30 dias de tratamento. Resultados mais significativos e visíveis geralmente aparecem entre 90 a 120 dias, com melhora progressiva do crescimento capilar.'
+    question: 'Em quanto tempo verei resultados?',
+    answer: 'Depende muito do metabolismo de cada paciente e da resposta do organismo ao tratamento. Mas, de forma geral, os resultados costumam começar a aparecer a partir de 2 meses de tratamento.'
   },
   {
     question: 'O tratamento funciona para homens e mulheres?',
-    answer: 'Sim! Nosso protocolo é personalizado e eficaz tanto para pacientes masculinos quanto femininos. Cada caso é avaliado individualmente para criar uma formulação específica considerando hormônios, genética e histórico médico.'
+    answer: 'Sim! Nosso protocolo é personalizado e eficaz tanto para pacientes masculinos quanto femininos. Cada caso é avaliado individualmente para criar uma formulação específica considerando hormônios, genética e pré-disposições que causem a queda do cabelo.'
   },
   {
     question: 'Quais são os efeitos colaterais?',
-    answer: 'O tratamento com enzimas capilares e minoxidil é geralmente bem tolerado. Efeitos colaterais são raros e, quando ocorrem, costumam ser leves, como leve irritação local. Todo o processo é acompanhado por profissional especializado.'
+    answer: 'O tratamento capilar é geralmente bem tolerado. Efeitos colaterais são raros e, quando ocorrem, costumam ser leves, como leve irritação local. Todo o processo é acompanhado por profissional especializado.'
   },
   {
     question: 'Como funciona o acompanhamento?',
     answer: 'Realizamos avaliações mensais com registro fotográfico para monitorar a evolução. O protocolo pode ser ajustado conforme necessário para otimizar os resultados. Você terá suporte contínuo durante todo o tratamento.'
   },
   {
-    question: 'Preciso fazer exames antes de iniciar?',
-    answer: 'Sim, solicitamos alguns exames laboratoriais básicos para avaliar seu estado de saúde geral e identificar possíveis causas da queda capilar. Isso permite criar um protocolo verdadeiramente personalizado e seguro.'
+    question: 'Preciso fazer alguma avaliação antes de iniciar?',
+    answer: 'Sim, a avaliação é feita por um profissional especializado, que analisará seu quadro capilar e com isso montaremos um protocolo personalizado para você.'
   },
   {
-    question: 'O resultado é permanente?',
-    answer: 'Os resultados são duradouros enquanto o tratamento é mantido. A queda capilar tem causas multifatoriais, e a manutenção é importante para preservar os ganhos obtidos. Discutimos estratégias de manutenção após a fase inicial.'
+    question: 'Faz o cabelo crescer mesmo?',
+    answer: 'Sim! O tratamento estimula a circulação e o metabolismo do folículo, fortalecendo os fios e ajudando no crescimento saudável.'
+  },
+  {
+    question: 'Ajuda na queda do cabelo?',
+    answer: 'Sim! O tratamento possui diversos ativos que diminuem a queda dos fios.'
+  },
+  {
+    question: 'Tem algum cuidado depois da aplicação?',
+    answer: 'Evitar lavar o cabelo no mesmo dia, não usar boné, evitar sol e atividade física intensa nas primeiras 24 horas.'
+  },
+  // botox
+  {
+    question: 'Quanto tempo dura o efeito?',
+    answer: 'Em média, de 3 a 4 meses. Isso pode variar conforme o metabolismo de cada pessoa.'
+  },
+  {
+    question: 'Vou ficar sem expressão?',
+    answer: 'Não precisa se preocupar! Quando bem aplicado, o botox mantém suas expressões naturais. Apenas suaviza o que te incomoda, sem tirar sua identidade.'
+  },
+  {
+    question: 'Tem algum cuidado após a aplicação?',
+    answer: 'Sim! Nas primeiras 24 horas é importante evitar deitar, massagear o rosto, fazer atividade física e consumir bebida alcoólica.'
+  },
+  // preenchimento facial
+  {
+    question: 'Em quanto tempo vejo o resultado?',
+    answer: 'O resultado é imediato, mas o aspecto final aparece em até 15 dias, quando o produto se acomoda e o inchaço diminui.'
+  },
+  {
+    question: 'Quanto tempo dura o preenchimento?',
+    answer: 'Depende da região e do metabolismo de cada paciente, mas geralmente o efeito dura de 8 a 12 meses.'
+  },
+  {
+    question: '⁠Tem algum cuidado após o procedimento?',
+    answer: 'Sim! Evite exercícios físicos, exposição solar, bebidas alcoólicas e maquiagem nas primeiras 24 horas. Alguns preenchimentos também exigem cuidados específicos, que explico sempre no pós-procedimento.'
   }
 ]
 
