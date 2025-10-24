@@ -4,7 +4,7 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-[var(--color-marrom-claro)] text-white">
+    <footer className="bg-[var(--color-marrom-escuro)] text-white">
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
           <div className="space-y-4">
@@ -27,18 +27,18 @@ export const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#results" className="text-white/80 hover:text-white transition-colors font-light text-sm">
-                  Resultados
+                <a href="#hair-treatment" className="text-white/80 hover:text-white transition-colors font-light text-sm">
+                  Tratamento Capilar
                 </a>
               </li>
               <li>
-                <a href="#how-it-works" className="text-white/80 hover:text-white transition-colors font-light text-sm">
-                  Como Funciona
+                <a href="#botox" className="text-white/80 hover:text-white transition-colors font-light text-sm">
+                  Botox
                 </a>
               </li>
               <li>
-                <a href="#faq" className="text-white/80 hover:text-white transition-colors font-light text-sm">
-                  FAQ
+                <a href="#filling" className="text-white/80 hover:text-white transition-colors font-light text-sm">
+                  Preenchimento
                 </a>
               </li>
               <li>
@@ -53,13 +53,13 @@ export const Footer = () => {
             <h3 className="text-lg font-light mb-4">Contato</h3>
             <ul className="space-y-3 text-sm">
               <li className="text-white/80 font-light">
-                <a href="tel:+5554999999999" className="hover:text-white transition-colors">
+                <a href="tel:+5551998902287" className="hover:text-white transition-colors">
                   (51) 99890-2287
                 </a>
               </li>
               <li className="text-white/80 font-light">
-                <a href="mailto:contato@dragabryella.com.br" className="hover:text-white transition-colors">
-                  contato@dragabryella.com.br
+                <a href="mailto:dragabryellaklein@gmail.com" className="hover:text-white transition-colors">
+                  dragabryellaklein@gmail.com
                 </a>
               </li>
               <li className="text-white/80 font-light">

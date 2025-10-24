@@ -23,24 +23,24 @@ export const Contact = () => {
   }
 
   return (
-    <section id="contact" className="relative min-h-screen flex items-center justify-center py-20 bg-gradient-to-br from-gray-50 to-white">
-      <div className="container mx-auto px-6 max-w-7xl">
-        <div className="text-center mb-16">
-          <div className="inline-block bg-[var(--color-marrom-claro)]/10 px-4 py-2 rounded-full mb-4">
-            <span className="text-[var(--color-marrom-claro)] text-sm font-light tracking-wide">FALE CONOSCO</span>
+    <section id="contact" className="relative min-h-screen flex items-center justify-center py-12 sm:py-16 lg:py-20 bg-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="inline-block bg-[var(--color-marrom-claro)]/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4">
+            <span className="text-[var(--color-marrom-claro)] text-xs sm:text-sm font-light tracking-wide">FALE CONOSCO</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-4">
             Agende sua <span className="text-[var(--color-marrom-claro)]">Avaliação</span>
           </h2>
-          <p className="text-lg text-gray-600 font-light max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 font-light max-w-2xl mx-auto px-4">
             Entre em contato e dê o primeiro passo para recuperar sua confiança
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          <div className="space-y-8">
-            <div className="bg-white rounded-2xl p-8 shadow-xl">
-              <div className="space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto">
+          <div className="space-y-6 sm:space-y-8">
+            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-xl">
+              <div className="space-y-4 sm:space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-light text-gray-700 mb-2">
                     Nome completo
@@ -51,7 +51,7 @@ export const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[var(--color-marrom-claro)] focus:ring-2 focus:ring-[var(--color-marrom-claro)]/20 transition-all outline-none"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[var(--color-marrom-claro)] focus:ring-2 focus:ring-[var(--color-marrom-claro)]/20 transition-all outline-none text-sm sm:text-base"
                     placeholder="Seu nome"
                   />
                 </div>
@@ -66,7 +66,7 @@ export const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[var(--color-marrom-claro)] focus:ring-2 focus:ring-[var(--color-marrom-claro)]/20 transition-all outline-none"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[var(--color-marrom-claro)] focus:ring-2 focus:ring-[var(--color-marrom-claro)]/20 transition-all outline-none text-sm sm:text-base"
                     placeholder="seu@email.com"
                   />
                 </div>
@@ -81,7 +81,7 @@ export const Contact = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[var(--color-marrom-claro)] focus:ring-2 focus:ring-[var(--color-marrom-claro)]/20 transition-all outline-none"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[var(--color-marrom-claro)] focus:ring-2 focus:ring-[var(--color-marrom-claro)]/20 transition-all outline-none text-sm sm:text-base"
                     placeholder="(00) 00000-0000"
                   />
                 </div>
@@ -96,14 +96,14 @@ export const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[var(--color-marrom-claro)] focus:ring-2 focus:ring-[var(--color-marrom-claro)]/20 transition-all outline-none resize-none"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[var(--color-marrom-claro)] focus:ring-2 focus:ring-[var(--color-marrom-claro)]/20 transition-all outline-none resize-none text-sm sm:text-base"
                     placeholder="Conte-nos um pouco sobre seu caso..."
                   />
                 </div>
 
                 <button
                   onClick={handleSubmit}
-                  className="w-full bg-[var(--color-marrom-claro)] text-white py-4 rounded-lg font-light hover:bg-opacity-90 transition-all duration-300 hover:shadow-lg"
+                  className="w-full bg-[var(--color-marrom-claro)] text-white py-3 sm:py-4 rounded-lg font-light hover:bg-[var(--color-marrom-escuro)] hover:scale-105 transition-all duration-300 group shadow-lg hover:shadow-2xl text-sm sm:text-base cursor-pointer"
                 >
                   Enviar Mensagem via WhatsApp
                 </button>
@@ -112,49 +112,49 @@ export const Contact = () => {
           </div>
 
           <div className="space-y-6">
-            <div className="bg-white rounded-2xl p-8 shadow-xl space-y-6">
-              <h3 className="text-2xl font-light text-gray-900 mb-6">Informações de Contato</h3>
+            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+              <h3 className="text-xl sm:text-2xl font-light text-gray-900 mb-4 sm:mb-6">Informações de Contato</h3>
 
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-[var(--color-marrom-claro)]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <PhoneIcon className="w-6 h-6 text-[var(--color-marrom-claro)]" />
+              <div className="flex items-start space-x-3 sm:space-x-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[var(--color-marrom-claro)]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <PhoneIcon className="w-5 h-5 sm:w-6 sm:h-6 text-[var(--color-marrom-claro)]" />
                 </div>
-                <div>
-                  <div className="text-sm text-gray-500 font-light mb-1">Telefone</div>
-                  <a href="tel:+5554999999999" className="text-gray-900 hover:text-[var(--color-marrom-claro)] transition-colors">
-                    (51)99890-2287
+                <div className="min-w-0 flex-1">
+                  <div className="text-xs sm:text-sm text-gray-500 font-light mb-1">Telefone</div>
+                  <a href="tel:+5551998902287" className="text-sm sm:text-base text-gray-900 hover:text-[var(--color-marrom-claro)] transition-colors break-words">
+                    (51) 99890-2287
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-[var(--color-marrom-claro)]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <EnvelopeIcon className="w-6 h-6 text-[var(--color-marrom-claro)]" />
+              <div className="flex items-start space-x-3 sm:space-x-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[var(--color-marrom-claro)]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <EnvelopeIcon className="w-5 h-5 sm:w-6 sm:h-6 text-[var(--color-marrom-claro)]" />
                 </div>
-                <div>
-                  <div className="text-sm text-gray-500 font-light mb-1">E-mail</div>
-                  <a href="mailto:contato@dragabryella.com.br" className="text-gray-900 hover:text-[var(--color-marrom-claro)] transition-colors">
-                    contato@dragabryella.com.br
+                <div className="min-w-0 flex-1">
+                  <div className="text-xs sm:text-sm text-gray-500 font-light mb-1">E-mail</div>
+                  <a href="mailto:dragabryellaklein@gmail.com" className="text-sm sm:text-base text-gray-900 hover:text-[var(--color-marrom-claro)] transition-colors break-all">
+                    dragabryellaklein@gmail.com
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-[var(--color-marrom-claro)]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <MapPinIcon className="w-6 h-6 text-[var(--color-marrom-claro)]" />
+              <div className="flex items-start space-x-3 sm:space-x-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[var(--color-marrom-claro)]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <MapPinIcon className="w-5 h-5 sm:w-6 sm:h-6 text-[var(--color-marrom-claro)]" />
                 </div>
-                <div>
-                  <div className="text-sm text-gray-500 font-light mb-1">Localização</div>
-                  <p className="text-gray-900">
+                <div className="min-w-0 flex-1">
+                  <div className="text-xs sm:text-sm text-gray-500 font-light mb-1">Localização</div>
+                  <p className="text-sm sm:text-base text-gray-900">
                     Unique Business Center, Gravataí - RS
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-[var(--color-marrom-claro)]/10 to-gray-100 rounded-2xl p-8">
-              <h4 className="text-xl font-light text-gray-900 mb-4">Horário de Atendimento</h4>
-              <div className="space-y-3 text-gray-700 font-light">
+            <div className="bg-gradient-to-br from-[var(--color-marrom-claro)]/10 to-gray-100 rounded-2xl p-6 sm:p-8">
+              <h4 className="text-lg sm:text-xl font-light text-gray-900 mb-4">Horário de Atendimento</h4>
+              <div className="space-y-3 text-sm sm:text-base text-gray-700 font-light">
                 <div className="flex justify-between">
                   <span>Segunda a sexta</span>
                   <span>09h às 20h</span>

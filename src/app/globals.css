@@ -5,5 +5,19 @@
   --color-foreground: #171717;
   --color-marrom-claro: #a1887f;
   --color-marrom-escuro: #5d4037;
-  --color-branco-suave: #ede4d3;
+  --color-branco-suave: #fff9ec;
+}
+
+:root {
+  --color-marrom-claro: #a1887f;
+  --color-marrom-escuro: #5d4037;
+  --color-branco-suave: #fff9ec;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.scroll-mt-20 {
+  scroll-margin-top: 5rem;
 }

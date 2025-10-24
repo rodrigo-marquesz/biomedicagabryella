@@ -1,3 +1,6 @@
+// ==========================================
+// components/header/Header.tsx (ATUALIZADO)
+// ==========================================
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -7,11 +10,10 @@ import { useState, useEffect } from 'react'
 
 const navLinks = [
   { href: '#about', label: 'Sobre' },
-  { href: '#results', label: 'Resultados' },
-  { href: '#how-it-works', label: 'Como Funciona' },
-  { href: '#benefits', label: 'Benefícios' },
-  { href: '#faq', label: 'FAQ' },
-  { href: '#contact', label: 'Contato' },
+  { href: '#hair-treatment', label: 'Tratamento Capilar' },
+  { href: '#botox', label: 'Botox' },
+  { href: '#filling', label: 'Preenchimento' },
+  { href: '#contact', label: 'Contato' }
 ]
 
 export const Header = () => {
@@ -35,11 +37,11 @@ export const Header = () => {
   }, [isOpen])
 
   return (
-    <header 
+    <header
       className={`
         fixed top-0 left-0 right-0 z-50 
         transition-all duration-300
-        ${isScrolled ? 'bg-[var(--color-marrom-claro)] shadow-lg' : 'bg-[var(--color-marrom-claro)] shadow-md'}
+        ${isScrolled ? 'bg-[var(--color-marrom-escuro)] shadow-lg' : 'bg-[var(--color-marrom-escuro)] shadow-md'}
       `}
     >
       <div className="container mx-auto px-4 sm:px-6">
@@ -89,7 +91,7 @@ export const Header = () => {
         </div>
       </div>
 
-      <div 
+      <div
         className={`
           fixed inset-0 bg-white lg:hidden transition-all duration-300 ease-in-out
           ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}
@@ -106,8 +108,8 @@ export const Header = () => {
                 transition-all duration-300 hover:text-[var(--color-marrom-claro)]
                 ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}
               `}
-              style={{ 
-                transitionDelay: isOpen ? `${index * 50}ms` : '0ms' 
+              style={{
+                transitionDelay: isOpen ? `${index * 50}ms` : '0ms'
               }}
               onClick={() => setIsOpen(false)}
             >

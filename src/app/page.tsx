@@ -1,25 +1,25 @@
 import { Header } from "./components/header/Header"
-import { Results } from "./components/results/Results";
-import { About } from "./components/about/About";
-import { HowItWorks } from "./components/howItWorks/HowItWorks";
-import { Benefits } from "./components/benefits/Benefits";
-import { FAQ } from "./components/faq/Faq";
-import { Contact } from "./components/contact/Contact";
-import { Footer } from "./components/footer/Footer";
-import { Hero } from "./components/hero/Hero";
+import { About } from "./components/about/About"
+import { ServicesHub } from "./components/servicesHub/ServicesHub"
+import { HairTreatment } from "./components/sections/hairTreatment/HairTreatment"
+import { Botox } from "./components/sections/botox/Botox"
+import { Filling } from "./components/sections/filling/Filling"
+import { Contact } from "./components/contact/Contact"
+import { Footer } from "./components/footer/Footer"
+import { WhatsAppFloat } from "./components/shared/WhatsAppFloat"
 
 export default function Home() {
   return (
     <div>
       <Header />
-      <Hero />
       <About />
-      <Results />
-      <HowItWorks />
-      <Benefits />
-      <FAQ />
+      <ServicesHub />
+      <HairTreatment />
+      <Botox />
+      <Filling />
       <Contact />
       <Footer />
+      <WhatsAppFloat />
     </div>
-  );
+  )
 }
