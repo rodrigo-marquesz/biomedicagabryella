@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: '/images/logo_branco_suave.png',
+  },
   metadataBase: new URL('https://dragabryellaklein.vercel.app'),
 };
 

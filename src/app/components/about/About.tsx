@@ -1,13 +1,23 @@
 'use client'
 import { useState, useRef, useEffect } from 'react'
-import { PlayIcon, PauseIcon, SpeakerWaveIcon, SpeakerXMarkIcon } from '@heroicons/react/24/solid'
+import { PlayIcon, PauseIcon, SpeakerWaveIcon, SpeakerXMarkIcon, ArrowPathIcon } from '@heroicons/react/24/solid'
 
 export const About = () => {
   const [isPlaying, setIsPlaying] = useState(true)
-  const [isMuted, setIsMuted] = useState(true)
-  const [volume, setVolume] = useState(0)
+  const [isMuted, setIsMuted] = useState(true) // DEVE começar mutado para autoplay funcionar
+  const [volume, setVolume] = useState(0.5) // Volume configurado para quando desmutar
   const [showControls, setShowControls] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+    
+    video.muted = true
+    video.volume = 0.5
+    
+    video.play().catch(() => console.warn('Autoplay bloqueado'))
+  }, [])
 
   useEffect(() => {
     const video = videoRef.current
@@ -33,6 +43,14 @@ export const About = () => {
     setVolume(val)
     if (val > 0 && isMuted) setIsMuted(false)
     if (val === 0 && !isMuted) setIsMuted(true)
+  }
+
+  const handleRestart = () => {
+    const video = videoRef.current
+    if (!video) return
+    video.currentTime = 0
+    video.play().catch(() => console.warn('Autoplay bloqueado'))
+    setIsPlaying(true)
   }
 
   const handleWhatsApp = () => {
@@ -89,6 +107,14 @@ export const About = () => {
                   ) : (
                     <SpeakerWaveIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   )}
+                </button>
+
+                <button 
+                  onClick={handleRestart} 
+                  aria-label="Reiniciar vídeo"
+                  className="hover:scale-110 transition-transform"
+                >
+                  <ArrowPathIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </button>
 
                 <input

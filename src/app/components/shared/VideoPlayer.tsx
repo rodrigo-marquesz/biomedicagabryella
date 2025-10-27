@@ -1,21 +1,43 @@
-// ==========================================
-// components/shared/VideoPlayer.tsx
-// ==========================================
 'use client'
 import { useState, useRef, useEffect } from 'react'
-import { PlayIcon, PauseIcon, SpeakerWaveIcon, SpeakerXMarkIcon } from '@heroicons/react/24/solid'
+import { PlayIcon, PauseIcon, SpeakerWaveIcon, SpeakerXMarkIcon, ArrowPathIcon } from '@heroicons/react/24/solid'
 
 interface VideoPlayerProps {
   src: string
   poster?: string
+  startMuted?: boolean
 }
 
-export const VideoPlayer = ({ src, poster }: VideoPlayerProps) => {
+export const VideoPlayer = ({ src, poster, startMuted = false }: VideoPlayerProps) => {
   const [isPlaying, setIsPlaying] = useState(true)
-  const [isMuted, setIsMuted] = useState(true)
-  const [volume, setVolume] = useState(0)
+  const [isMuted, setIsMuted] = useState(true) // Começa mutado para garantir autoplay
+  const [volume, setVolume] = useState(0.5)
   const [showControls, setShowControls] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const playVideo = async () => {
+      try {
+        video.muted = true
+        video.volume = volume
+        await video.play()
+        setIsPlaying(true)
+      } catch (error) {
+        console.warn('Autoplay bloqueado:', error)
+        setIsPlaying(false)
+      }
+    }
+
+    if (video.readyState >= 3) {
+      playVideo()
+    } else {
+      video.addEventListener('loadeddata', playVideo)
+      return () => video.removeEventListener('loadeddata', playVideo)
+    }
+  }, [volume])
 
   useEffect(() => {
     const video = videoRef.current
@@ -29,10 +51,11 @@ export const VideoPlayer = ({ src, poster }: VideoPlayerProps) => {
     if (!video) return
     if (isPlaying) {
       video.pause()
+      setIsPlaying(false)
     } else {
       video.play().catch(() => console.warn('Autoplay bloqueado'))
+      setIsPlaying(true)
     }
-    setIsPlaying(!isPlaying)
   }
 
   const toggleMute = () => setIsMuted(!isMuted)
@@ -41,6 +64,14 @@ export const VideoPlayer = ({ src, poster }: VideoPlayerProps) => {
     setVolume(val)
     if (val > 0 && isMuted) setIsMuted(false)
     if (val === 0 && !isMuted) setIsMuted(true)
+  }
+
+  const handleRestart = () => {
+    const video = videoRef.current
+    if (!video) return
+    video.currentTime = 0
+    video.play().catch(() => console.warn('Autoplay bloqueado'))
+    setIsPlaying(true)
   }
 
   return (
@@ -56,7 +87,7 @@ export const VideoPlayer = ({ src, poster }: VideoPlayerProps) => {
           autoPlay
           loop
           playsInline
-          muted
+          muted={startMuted}
           className="w-full h-full object-cover"
           poster={poster}
         >
@@ -90,6 +121,14 @@ export const VideoPlayer = ({ src, poster }: VideoPlayerProps) => {
             ) : (
               <SpeakerWaveIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             )}
+          </button>
+
+          <button
+            onClick={handleRestart}
+            aria-label="Reiniciar vídeo"
+            className="hover:scale-110 transition-transform"
+          >
+            <ArrowPathIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
           </button>
 
           <input

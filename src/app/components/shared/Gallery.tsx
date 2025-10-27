@@ -1,9 +1,6 @@
-// ==========================================
-// components/shared/Gallery.tsx
-// ==========================================
 'use client'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { ChevronLeftIcon, ChevronRightIcon, ArrowRightIcon } from '@heroicons/react/24/solid'
 
 interface GalleryImage {
@@ -21,11 +18,18 @@ export const Gallery = ({ images, title }: GalleryProps) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [mobileIndex, setMobileIndex] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
+  const touchStartX = useRef(0)
+  const touchEndX = useRef(0)
 
   const mobileSlides = images.flatMap(img => [
     { image: img.before, label: 'Antes', title: img.title, type: 'before' },
     { image: img.after, label: 'Depois', title: img.title, type: 'after' }
   ])
+
+  // Calcular o índice correto da imagem atual no mobile
+  // Como temos 2 slides por imagem (antes/depois), dividimos por 2 e arredondamos para baixo
+  const currentMobileImageIndex = Math.floor(mobileIndex / 2)
+  const currentMobileImage = images[currentMobileImageIndex] !== undefined ? images[currentMobileImageIndex] : images[0]
 
   useEffect(() => {
     if (isHovered) return
@@ -51,7 +55,32 @@ export const Gallery = ({ images, title }: GalleryProps) => {
     setMobileIndex(index * 2)
   }
 
-  const currentImage = images[currentIndex]
+  // Handlers para swipe/arrastar no mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = () => {
+    const swipeThreshold = 50 // pixels mínimos para considerar um swipe
+    const diff = touchStartX.current - touchEndX.current
+
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        goToNext()
+      } else {
+        goToPrevious()
+      }
+    }
+
+    touchStartX.current = 0
+    touchEndX.current = 0
+  }
+
+  const currentImage = images[currentIndex] !== undefined ? images[currentIndex] : images[0]
 
   return (
     <div className="py-16 sm:py-20 bg-white">
@@ -72,6 +101,7 @@ export const Gallery = ({ images, title }: GalleryProps) => {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
+          {/* Desktop Gallery */}
           <div className="hidden lg:block relative overflow-hidden">
             <div
               className="flex transition-transform duration-1000 ease-in-out"
@@ -123,13 +153,19 @@ export const Gallery = ({ images, title }: GalleryProps) => {
             </div>
           </div>
 
-          <div className="lg:hidden relative overflow-hidden pb-5">
+          {/* Mobile Gallery - COM SWIPE */}
+          <div 
+            className="lg:hidden relative overflow-hidden pb-5"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <div
-              className="flex transition-transform duration-1000 ease-in-out"
+              className="flex transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${mobileIndex * 100}%)` }}
             >
               {mobileSlides.map((slide, i) => (
-                <div key={i} className="min-w-full flex-shrink-0">
+                <div key={i} className="min-w-full flex-shrink-0 px-2">
                   <div className="relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 shadow-xl overflow-hidden max-w-md mx-auto">
                     <div className={`absolute top-4 left-4 z-10 ${
                       slide.type === 'before' ? 'bg-black/70' : 'bg-[var(--color-marrom-claro)]'
@@ -142,7 +178,7 @@ export const Gallery = ({ images, title }: GalleryProps) => {
                         alt={`${slide.label} do tratamento`}
                         fill
                         className="object-cover"
-                        sizes="90vw"
+                        sizes="100vw"
                         priority={i < 2}
                       />
                     </div>
@@ -150,46 +186,54 @@ export const Gallery = ({ images, title }: GalleryProps) => {
                 </div>
               ))}
             </div>
+
+            {mobileSlides.length > 1 && (
+              <>
+                <button
+                  onClick={goToPrevious}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all z-10"
+                  aria-label="Resultado anterior"
+                >
+                  <ChevronLeftIcon className="w-5 h-5 text-[var(--color-marrom-claro)]" />
+                </button>
+                <button
+                  onClick={goToNext}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all z-10"
+                  aria-label="Próximo resultado"
+                >
+                  <ChevronRightIcon className="w-5 h-5 text-[var(--color-marrom-claro)]" />
+                </button>
+              </>
+            )}
           </div>
 
-          <button
-            onClick={goToPrevious}
-            className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 w-12 h-12 bg-white hover:bg-gray-50 rounded-full shadow-lg items-center justify-center transition-all group z-10"
-            aria-label="Resultado anterior"
-          >
-            <ChevronLeftIcon className="w-6 h-6 text-[var(--color-marrom-claro)] group-hover:-translate-x-0.5 transition-transform" />
-          </button>
-
-          <button
-            onClick={goToNext}
-            className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 w-12 h-12 bg-white hover:bg-gray-50 rounded-full shadow-lg items-center justify-center transition-all group z-10"
-            aria-label="Próximo resultado"
-          >
-            <ChevronRightIcon className="w-6 h-6 text-[var(--color-marrom-claro)] group-hover:translate-x-0.5 transition-transform" />
-          </button>
-
-          <div className="flex lg:hidden justify-center gap-4 mt-6">
+          {/* Botões Desktop */}
+          {images.length > 1 && (
             <button
               onClick={goToPrevious}
-              className="w-10 h-10 bg-white hover:bg-gray-50 rounded-full shadow-lg flex items-center justify-center transition-all"
+              className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 w-12 h-12 bg-white hover:bg-gray-50 rounded-full shadow-lg items-center justify-center transition-all group z-10"
               aria-label="Resultado anterior"
             >
-              <ChevronLeftIcon className="w-5 h-5 text-[var(--color-marrom-claro)]" />
+              <ChevronLeftIcon className="w-6 h-6 text-[var(--color-marrom-claro)] group-hover:-translate-x-0.5 transition-transform" />
             </button>
+          )}
+
+          {images.length > 1 && (
             <button
               onClick={goToNext}
-              className="w-10 h-10 bg-white hover:bg-gray-50 rounded-full shadow-lg flex items-center justify-center transition-all"
+              className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 w-12 h-12 bg-white hover:bg-gray-50 rounded-full shadow-lg items-center justify-center transition-all group z-10"
               aria-label="Próximo resultado"
             >
-              <ChevronRightIcon className="w-5 h-5 text-[var(--color-marrom-claro)]" />
+              <ChevronRightIcon className="w-6 h-6 text-[var(--color-marrom-claro)] group-hover:translate-x-0.5 transition-transform" />
             </button>
-          </div>
+          )}
         </div>
 
         <div className="mt-8 space-y-4">
           <div className="text-center">
             <h4 className="text-lg sm:text-xl font-light text-gray-900">
-              {currentImage.title}
+              <span className="hidden lg:inline">{currentImage.title}</span>
+              <span className="lg:hidden">{currentMobileImage.title}</span>
             </h4>
           </div>
 

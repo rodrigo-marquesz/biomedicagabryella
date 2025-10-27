@@ -1,6 +1,3 @@
-// ==========================================
-// components/shared/WhatsAppFloat.tsx
-// ==========================================
 'use client'
 import { useState, useEffect } from 'react'
 

@@ -79,6 +79,7 @@ export const HairTreatment = () => {
             <VideoPlayer
               src="/videos/enzimas_capilares.mp4"
               poster="/images/video-poster.jpg"
+              startMuted={true}
             />
 
             <div className="space-y-4 sm:space-y-6 text-center lg:text-left">
